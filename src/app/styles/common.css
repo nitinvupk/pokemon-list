@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
+body {
+    font-family: 'Gugi', cursive;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: #8fb3d5;
+}
+
+.container-auto{
+    max-width: 1280px;
+    margin: 0 auto;
+}
+.header{
+    width: 100%;
+    text-align: center;
+    margin-top: 40px;
+}
+.header h1{
+    font-size: 40px;
+    margin-bottom: 25px;
+}
+
+.header h4{
+    font-size: 20px;
+    margin-bottom: 25px;
+    color: #fff;
+}
+.header h4 a{
+    color: #fff;
+}
+.serach-fildes{
+    max-width: 300px;
+    margin: 0 auto;
+}
+.serach-fildes input{
+    background-color: #fff;
+    text-align: center;
+    padding: 12px;
+    border: none;
+    color: #000;
+    margin-bottom: 50px;
+    width: 100%;
+    outline: none;
+    min-height: 50px;
+}
+.card-list{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+.card-continer{
+    width: calc(25% - 20px);
+    border: solid 4px #000;
+    background-color: #fff;
+    border-radius: 6px;
+}
+.card-continer img{
+    max-width: 100%;
+    margin-top: auto;
+}
+.card-continer h2{
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+    font-size: 20px;
+    padding: 15px;
+    margin-top: auto;
+    margin-bottom: 0;
+}
+.card-continer h3{
+    color: #000;
+    text-align: center;
+    font-size: 16px;
+    padding: 15px;
+    margin-top: 0;
+}
+.card-continer a{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+}
+.pagesNumbers{
+    width: 100%;
+    text-align: center;
+    margin: 30px 0;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+}   
+.pagesNumbers button, .pagesNumbers span {  
+    background-color: #fff;
+    border: solid 1px #5a5a5a;
+    padding: 13px 21px;
+    color: #000;
+    font-weight: 600;
+}
+.pagesNumbers button.active-page, .pagesNumbers span.active-page  {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+.pagesNumbers button:hover {
+    background-color: #f37169;
+    color: #fff;
+}
+.loaderWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notFound {
+    width: 100%;
+    text-align: center;
+    margin: 30px 0;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 767px) {
+    .card-continer{
+        width: calc(100% - 20px);
+    }
+}
