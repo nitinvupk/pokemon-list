@@ -1,24 +1,41 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+type pokemonList = {
+  id: string,
+  url: string,
+  name: string
+}
+
 type PokemonState = {
   loading: boolean,
-  pokemonList: any[],
+  pokemonList: pokemonList[],
   error: any,
-  totalPage: any,
-  searchedData: any
+  totalPage: number,
 };
 
 const initialState = {
   loading: true,
   pokemonList: [],
   error: null,
-  totalPage: null,
-  searchedData: [],
+  totalPage: 0,
 } as PokemonState;
 
-export const fetchUserData = createAsyncThunk('user/fetchUserData', async (data: any) => {
-  const {page, offset} = data;
-  let response =await fetch(`https://pokeapi.co/api/v2/pokemon?limit=12&offset=${page * offset}`);
+type Payload = {
+  payload: {
+    results: pokemonList[];
+    count: number;
+  }
+}
+
+type Error = {
+  error: {
+    message?:  {}
+  }
+}
+
+export const fetchUserData = createAsyncThunk('user/fetchUserData', async (data: { page: number, offset: number }) => {
+  const { page, offset } = data;
+  let response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=12&offset=${page * offset}`);
   const res = await response.json();
   return res;
 });
@@ -31,11 +48,11 @@ export const pokemonData = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchUserData.pending, (state) => {
+      .addCase(fetchUserData.pending, (state: PokemonState) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchUserData.fulfilled, (state, action: any) => {
+      .addCase(fetchUserData.fulfilled, (state: PokemonState, action: Payload) => {
         state.loading = false;
         let data = action.payload.results.map((element: any) => ({
           ...element,
@@ -44,7 +61,7 @@ export const pokemonData = createSlice({
         state.totalPage = action.payload.count;
         state.pokemonList = data;
       })
-      .addCase(fetchUserData.rejected, (state, action) => {
+      .addCase(fetchUserData.rejected, (state: PokemonState, action: Error) => {
         state.loading = false;
         state.error = action.error.message;
       });

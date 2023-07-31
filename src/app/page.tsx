@@ -19,7 +19,7 @@ export default function Home() {
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(0);
   const offset = 12;
-  const fileteredPokemons = pokemonList.filter(pokemon => pokemon.name && (pokemon.name?.toLowerCase().includes(search && search.toLowerCase()) || pokemon.id?.toLowerCase().includes(search && search.toLowerCase())  || ''));
+  const fileteredPokemons = pokemonList.filter(pokemon => pokemon.name && (pokemon.name?.toLowerCase().includes(search && search.toLowerCase()) || pokemon.id?.toLowerCase().includes(search && search.toLowerCase()) || ''));
 
   useEffect(() => {
     dispatch(fetchUserData({ page, offset }))
@@ -49,10 +49,10 @@ export default function Home() {
           :
           <>
             {search === '' || fileteredPokemons.length > 0 ?
-            <>
-              <CardList pokemons={fileteredPokemons}></CardList>
-              <Pagination setPage={setPage} page={page} totalPage={totalPage} />
-            </>
+              <>
+                <CardList pokemons={fileteredPokemons}></CardList>
+                <Pagination setPage={setPage} page={page} totalPage={totalPage} />
+              </>
               :
               <NotFound />
             }
