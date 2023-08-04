@@ -85,6 +85,12 @@ body {
     flex-direction: column;
     text-decoration: none;
 }
+.cardboxpock{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 445px;
+}
 .pagesNumbers{
     width: 100%;
     text-align: center;
@@ -111,7 +117,14 @@ body {
     background-color: #f37169;
     color: #fff;
 }
-.loaderWrapper{
+.loaderWrapper{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.loader {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -129,4 +142,87 @@ body {
     .card-continer{
         width: calc(100% - 20px);
     }
+}
+.main-head {
+    text-align: center;
+    padding: 30px;
+    text-shadow: 2px 2px 1px #fff;
+    font-size: 46px;
+}
+.pokemon-image {
+    display: flex;
+    gap: 50px;
+    max-width: 1450px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 15px;
+}
+.pokemon-section {
+    width: 100%;
+}
+.pokemon-img-sec {
+    text-align: center;
+}
+.pokemon-img-sec img {
+    border: 3px solid #000;
+    height: 700px;
+    border-radius: 5px;
+}
+.pokemon-content {
+    background-color: #fff;
+    border: 3px solid #000;
+    padding: 30px;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.pokemon-content >  div {
+    width: 50%;
+}
+
+.ability-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.ability-list > div {
+    border-radius: 5px;
+    padding: 10px 15px;
+    min-width: 125px;
+    background-color: #fff;
+    text-align: center;
+    margin: 0 -20px 0 30px;
+    border: solid 1px #212121;
+}
+.pokemon-head {
+    padding: 0 30px;
+}
+.btn-back {
+    background: transparent;
+    border: none;
+    text-decoration: underline;
+    font-size: 20px;
+    width: 100%;
+    text-align: right;
+    padding: 0 15px;
+}
+.btn-back {
+    border: none;
+    font-size: 20px;
+    width: 100%;
+    text-align: right;
+    background-color: #fff;
+    color: #000;
+    padding: 10px 15px;
+    border-radius: 4px;
+    position: absolute;
+    left: 15px;
+    top: -93px;
+    width: auto;
+    text-decoration: none;
+    cursor: pointer;
+}
+.btn-back:hover{
+    background-color: #000;
+    color: #fff;
 }
