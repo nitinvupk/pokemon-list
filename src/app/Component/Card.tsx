@@ -18,7 +18,7 @@ interface CardProps {
 
 export const Card = (props: CardProps) => {
   const dispatch = useAppDispatch();
-  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
   const handleImageLoad = () => {
     setImageLoaded(true);
@@ -33,7 +33,7 @@ export const Card = (props: CardProps) => {
       <Link href="[details]" as={`/${props.pokemon?.name}`}>
         <div className='cardboxpock' onClick={() => dispatch(fetchPokemonDetails(props.pokemon?.name))}>
           {!imageLoaded && (
-            <div className="loaderWrapper">
+            <div className="loader">
               <img alt="pokemon" src={LoaderImg.src} />
             </div>
           )}

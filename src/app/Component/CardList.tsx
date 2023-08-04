@@ -14,7 +14,7 @@ interface CardListProps {
 
 export const CardList = (props: CardListProps) => (
   <div className='card-list'>
-    {props.pokemons.map(pokemon => (
+    {props.pokemons.map((pokemon:Pokemon) => (
       <Card key={pokemon.name} pokemon={pokemon}></Card>
     ))}
   </div>

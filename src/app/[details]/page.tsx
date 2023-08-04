@@ -22,11 +22,33 @@ type types = {
   }
 }
 
+type state = {
+  pokemonReducer: {
+    loading: boolean;
+    pokemonList: never[];
+    error: null;
+    totalPage: number;
+    pokemonData: {};
+    pokemonDetails: {
+      id: string;
+      height: string;
+      name: string;
+      weight: string;
+      base_experience: string;
+      abilities: never[];
+      types: never[];
+    };
+    detailsLoading: boolean;
+    detailserror: null;
+    currentPage: number;
+  };
+}
+
 const PokemonDetailPage = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const pathname = usePathname()
-  const { detailserror, detailsLoading, pokemonDetails, currentPage } = useAppSelector((state) => state.pokemonReducer);
+  const { detailserror, detailsLoading, pokemonDetails, currentPage } = useAppSelector((state: state) => state.pokemonReducer);
 
   useEffect(() => {
     dispatch(fetchPokemonDetails(pathname.slice(1)))

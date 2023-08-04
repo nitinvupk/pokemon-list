@@ -18,15 +18,37 @@ type pokemonList = {
   name: string
 }
 
+type state = {
+  pokemonReducer: {
+    loading: boolean;
+    pokemonList: never[];
+    error: null;
+    totalPage: number;
+    pokemonData: {};
+    pokemonDetails: {
+      id: string;
+      height: string;
+      name: string;
+      weight: string;
+      base_experience: string;
+      abilities: never[];
+      types: never[];
+    };
+    detailsLoading: boolean;
+    detailserror: null;
+    currentPage: number;
+  };
+}
+
 export default function Home() {
-  const { pokemonList, error, loading, totalPage, currentPage } = useAppSelector((state) => state.pokemonReducer);
+  const { pokemonList, error, loading, totalPage, currentPage } = useAppSelector((state: state) => state.pokemonReducer);
   const dispatch = useAppDispatch();
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState<string>('');
   const offset = 12;
-  const fileteredPokemons = pokemonList.filter(( pokemon: pokemonList) => pokemon.name && (pokemon.name?.toLowerCase().includes(search && search.toLowerCase()) || pokemon.id?.toLowerCase().includes(search && search.toLowerCase()) || ''));
+  const fileteredPokemons = pokemonList.filter((pokemon: pokemonList) => pokemon.name && (pokemon.name?.toLowerCase().includes(search && search.toLowerCase()) || pokemon.id?.toLowerCase().includes(search && search.toLowerCase()) || ''));
 
   useEffect(() => {
-    dispatch(fetchPokemonData({ page:currentPage, offset }))
+    dispatch(fetchPokemonData({ page: currentPage, offset }))
   }, [currentPage])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -65,7 +87,7 @@ export default function Home() {
               <h2>{error}</h2>
             }
           </>
-      }     
+      }
     </div>
   );
 }
